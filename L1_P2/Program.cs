@@ -6,12 +6,39 @@ namespace L1_P2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please enter a date");
+            //Welcome User
+
+            Console.WriteLine("Hello, this program will calculate the difference in years, months, days, and minutes between two dates.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+
+            Console.WriteLine("You will enter two dates, please enter the later date first.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+
+            Console.WriteLine("Format: mm/dd/yyyy, or mm-dd-yyyy, or m-d-yyyy, or January 9 2017");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+
+            // First Date input
+
+            Console.WriteLine("Date 1: ");
             DateTime dt1 = DateTime.Parse(Console.ReadLine());
-          
-            Console.WriteLine("Please enter another date, earlier than the first");
+
+            // Second Date input
+
+            Second:
+            Console.WriteLine("Date 2 (earlier than the first): ");
             DateTime dt2 = DateTime.Parse(Console.ReadLine());
-          
+
+            // Validation of Date 2 
+
+            if (dt2 > dt1)
+            {
+                Console.WriteLine("That date is not earlier.");
+                goto Second;
+            }
+
             TimeSpan ts = dt1 - dt2;
 
             float days = ts.Days;
@@ -33,4 +60,5 @@ namespace L1_P2
         }
            
     }
-}
+} // exceptions, when year >9999, days above what that month has
+// how can I make it so that any date can be entered first or second, doesn't matter if earlier or later
