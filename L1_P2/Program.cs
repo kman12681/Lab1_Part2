@@ -13,15 +13,14 @@ namespace L1_P2
             Console.ReadKey(true);
 
             Console.WriteLine("You will enter two dates, please enter the later date first.");
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey(true);
-
+           
             Console.WriteLine("Format: mm/dd/yyyy, or mm-dd-yyyy, or m-d-yyyy, or January 9 2017");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);
 
             // First Date input
 
+            First:
             Console.WriteLine("Date 1: ");
             DateTime dt1 = DateTime.Parse(Console.ReadLine());
 
@@ -36,7 +35,30 @@ namespace L1_P2
             if (dt2 > dt1)
             {
                 Console.WriteLine("That date is not earlier.");
-                goto Second;
+
+                Third:
+                Console.WriteLine("Would you like to enter Date 1 again? (y or n, press enter) ");
+
+                ConsoleKeyInfo cki = Console.ReadKey();
+
+                if (cki.Key.ToString() == "Y" || cki.Key.ToString() == "y")
+                {
+                    Console.ReadKey();
+                    goto First;
+                }
+
+
+                else if (cki.Key.ToString() == "N" || cki.Key.ToString() == "n")
+                {
+                    Console.ReadKey();
+                    goto Second; }
+
+                else
+                {
+                    Console.WriteLine("Not a valid entry");
+                    goto Third;
+                }
+                
             }
 
             TimeSpan ts = dt1 - dt2;
