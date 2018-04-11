@@ -20,19 +20,51 @@ namespace L1_P2
             Console.WriteLine();
 
             // First Date input
-            
-            Console.WriteLine("Date 1: ");
-            Console.WriteLine();
-            DateTime dt1 = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine();
 
+            First:
+            Console.WriteLine("Date 1: ");            
+            Console.WriteLine();
+            string date1 = Console.ReadLine();
+            DateTime dt1;
+
+            //Input Validation
+
+            if (DateTime.TryParse(date1, out dt1))
+            {
+                String.Format("{0:d/MM/yyyy}", dt1);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please use this format: mm/dd/yyyy, mm-dd-yyyy, m-d-yyyy, or January 9 2017");
+                Console.WriteLine();
+                goto First;
+            }
+                       
             // Second Date input
-            
+
+            Second:
             Console.WriteLine("Date 2: ");
             Console.WriteLine();
-            DateTime dt2 = DateTime.Parse(Console.ReadLine());
-            
+            string date2 = Console.ReadLine();
+            DateTime dt2;
 
+            // Input Validation
+
+            if (DateTime.TryParse(date2, out dt2))
+            {
+                String.Format("{0:d/MM/yyyy}", dt2);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Please use this format: mm/dd/yyyy, mm-dd-yyyy, m-d-yyyy, or January 9 2017");
+                Console.WriteLine();
+                goto Second;
+            }           
+            
             // Difference in dates to TimeSpan
 
             TimeSpan ts = dt1 - dt2;
@@ -42,8 +74,7 @@ namespace L1_P2
             float months = years * 12;
             float hours = days * 24;
             float minutes = hours * 60;
-
-            Console.WriteLine();
+                        
             Console.WriteLine("Difference In: ");
             Console.WriteLine();
             Console.WriteLine("Years: {0}", years);
@@ -55,40 +86,15 @@ namespace L1_P2
             Console.WriteLine("Hours: {0} ", hours);
             Console.WriteLine();
             Console.WriteLine("Minutes: {0} ", minutes);
+            Console.WriteLine();
 
-            Console.ReadLine();
-
+            Console.WriteLine("Press any key to try again.");
+            Console.ReadKey(true);
+            Console.WriteLine();
+            goto First;       
+                     
         }
            
     }
-} 
+}
 
-              // exceptions, when year >9999, days above what that month has
-  /*if (dt2 > dt1)
-              {
-                  Console.WriteLine("That date is not earlier.");
-
-                  Third:
-                  Console.WriteLine("Would you like to enter Date 1 again? (y or n, press enter) ");
-
-                  ConsoleKeyInfo cki = Console.ReadKey();
-
-                  if (cki.Key.ToString() == "Y" || cki.Key.ToString() == "y")
-                  {
-                      Console.ReadKey();
-                      goto First;
-                  }
-
-
-                  else if (cki.Key.ToString() == "N" || cki.Key.ToString() == "n")
-                  {
-                      Console.ReadKey();
-                      goto Second; }
-
-                  else
-                  {
-                      Console.WriteLine("Not a valid entry");
-                      goto Third;
-                  }
-
-              }*/
